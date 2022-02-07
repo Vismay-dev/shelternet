@@ -36,7 +36,7 @@ const LogModal = (props)=> {
         event.preventDefault();
         console.log(user)
 
-           axios.post(process.env.NODE_ENV!=='production'?'http://localhost:4000/api/user/login':'http://localhost:4000/api/user/login', user).then(res=> {
+           axios.post(process.env.NODE_ENV!=='production'?'https://codex-shelternet.herokuapp.com/api/user/login':'http://localhost:4000/api/user/login', user).then(res=> {
             console.log(res.data)
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('isShelter', res.data.isShelter);
