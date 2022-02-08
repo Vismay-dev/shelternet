@@ -43,6 +43,8 @@ app.use('/api/user',API)
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
+    app.use('*', express.static('client/build')); // Added this     
+
     app.get('*', (req,res)=> {
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
