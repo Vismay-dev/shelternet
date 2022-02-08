@@ -50,7 +50,7 @@ const AboutModal = (props) => {
     About Us
   </h2>
 
-  <h3 class = 'text-center mt-2 relative pt-6 pb-3'>"Shelternet is a Non-Profit Organization which aims to make the pet adoption process in the UAE simpler and accessible to all. <br/><br/> As the co-founders of this platform, we were deeply moved when we came across an instagram post that reported a dog shelter shutting down. Many animals under the shelter's care were left homeless due to a lack of adoption and support. <br/><br/> Inspired by that incident, this website was created in the hope that fostered stray animals in shelters and adoption centers can get a new home and family." <br/><br/> - Vismay Suramwar and Saatvik Sharma, the Co-founders of Shelternet</h3>
+  <h3 class = 'text-center mt-2 relative pt-6 pb-3'>"Shelternet is a Non-Profit Organization which aims to make the pet adoption process in the UAE simpler and accessible to all. <br/><br/> As the co-founders of this platform, we were deeply moved when we came across an instagram post that reported a dog shelter shutting down. Many animals under the shelter's care were left homeless due to a lack of adoption and support. <br/><br/> Inspired by that incident, this website was created in the hope that stray animals fostered in shelters and adoption centers can get a new home and family." <br/><br/> - Vismay Suramwar and Saatvik Sharma, the Co-founders of Shelternet</h3>
 </div>
 
 
