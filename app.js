@@ -13,7 +13,7 @@ const express = require('express')
 
 
 // app.use(methodOverride('_method'))
-app.use(secure)
+// app.use(secure)
 app.use(mongoSanitize())
 dotenv.config()
 

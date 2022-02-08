@@ -1,7 +1,7 @@
 import NavBar from './Components/Nav/NavBar'
 import MainContent from './Components/MainContent/MainContent';
 import Footer from './Components/Footer/Footer';
-import { BrowserRouter,Redirect, Route,Switch,Routes,useLocation, useHistory} from "react-router-dom"
+import { BrowserRouter,Redirect, Route,Switch,Routes,useLocation, useHistory, Router} from "react-router-dom"
 import RotateLoader from 'react-spinners/RotateLoader'
 import { useEffect , useState} from 'react';
 
