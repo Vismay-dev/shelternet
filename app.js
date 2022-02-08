@@ -14,7 +14,7 @@ const express = require('express')
 
 // app.use(methodOverride('_method'))
 // app.use(secure)
-app.use(mongoSanitize())
+// app.use(mongoSanitize())
 dotenv.config()
 
 cloudinary.config({
