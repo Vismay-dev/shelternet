@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="px-4 lg:py-10 sm:py-3 pt-0 pb-3 bg-gradient-to-r from-amber-700 to-amber-600 opacity-80 dark:text-gray-100 md:-mb-80  relative -mt-10">
         <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
             <div className="flex flex-row pr-3 relative lg:top-0 sm:-top-3 top-0 lg:right-0 right-44  lg:mx-0 mx-auto space-x-4 sm:space-x-8">
-                <ul className="flex flex-wrap items-center  space-x-4  sm:w-48 w-80 sm:space-x-8 relative lg:text-base   lg:right-0  xs3:text-sm text-base">
+                <ul className="flex flex-wrap items-center  space-x-4  sm:w-48 w-80 sm:space-x-8 relative lg:text-base lg:top-0 lg:pt-0 top-2 pt-1 lg:text-left text-center mx-auto    xs3:text-sm text-base">
                     <li>
                         <a href="#">Terms of Use</a>
                     </li>
@@ -14,7 +14,7 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-            <ul className="flex flex-wrap pl-3 space-x-4 relative lg:bottom-0 lg:left-0 md:left-36 sm:left-20 -left-2 bottom-4 sm:space-x-8">
+            <ul className="lg:top-0 lg:pt-0 top-0 pt-0 mr-20 flex flex-wrap pl-3 space-x-4 relative lg:bottom-0 lg:left-0 md:left-36 sm:left-20 -left-2 bottom-4 sm:space-x-8">
             {/* <a href="#" title="Facebook" className="flex items-center p-1">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="md:w-7 md:h-7 w-5 h-5 fillCurrent">
 							<path d="M32 16c0-8.839-7.167-16-16-16-8.839 0-16 7.161-16 16 0 7.984 5.849 14.604 13.5 15.803v-11.177h-4.063v-4.625h4.063v-3.527c0-4.009 2.385-6.223 6.041-6.223 1.751 0 3.584 0.312 3.584 0.312v3.937h-2.021c-1.984 0-2.604 1.235-2.604 2.5v3h4.437l-0.713 4.625h-3.724v11.177c7.645-1.199 13.5-7.819 13.5-15.803z"></path>

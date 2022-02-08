@@ -181,7 +181,7 @@ Edit Shelter/Agency Page
         {/* Product info */}
         <div data-aos="fade-up" data-aos-once='true' className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-extrabold tracking-tight md:-mt-0 -mt-12 md:mb-0 mb-10  md:text-left text-center text-gray-900 sm:text-3xl">{shelter?shelter.name:''}</h1>
+            <h1 className="text-2xl font-extrabold tracking-tight lg:-mt-0 -mt-12 lg:mb-0 mb-10  lg:text-left text-center text-gray-900 sm:text-3xl">{shelter?shelter.name:''}</h1>
           </div>
 
           {/* Options */}
@@ -211,14 +211,14 @@ Edit Shelter/Agency Page
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base md:text-left text-center text-gray-900">{shelter? shelter.desc.replace('/n','&#10;'):''}</p>
+                <p className="text-base lg:text-left text-center text-gray-900">{shelter? shelter.desc.replace('/n','&#10;'):''}</p>
               </div>
             </div>
 
             <div className="mt-10">
-              <h3 className="text-sm font-medium md:text-left text-center text-gray-900">Steps to Adopt</h3>
+              <h3 className="text-sm font-medium lg:text-left text-center text-gray-900">Steps to Adopt</h3>
 
-              <div className="mt-4 md:text-left text-center">
+              <div className="mt-4 lg:text-left text-center">
                {shelter?shelter.steps.replace('/n','&#10;'):''}
               </div>
             </div>
@@ -230,7 +230,7 @@ Edit Shelter/Agency Page
                 type="submit"
                 onClick = {shelter?()=> {
                   window.open(shelter.site, '_blank')}:()=>{}}
-                className="mt-14 md:-mb-10 -mb-4 w-1/3 ring-4 mx-auto bg-white border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-amber-600 hover:text-white focus:outline-none ring-offset-2 ring-amber-600"
+                className="mt-14 lg:-mb-10 -mb-2 w-1/3 ring-4 mx-auto bg-white border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-amber-600 hover:text-white focus:outline-none ring-offset-2 ring-amber-600"
               >
                 Apply to Adopt
               </button>
