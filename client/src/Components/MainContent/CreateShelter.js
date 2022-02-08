@@ -55,8 +55,6 @@ const CreateShelter = () => {
         )
         if(res.data.center){
           setShelter(res.data.center)
-          sessionStorage.setItem('isShelterCreated',true)
-
         }
         if(!res.data.center){
           sessionStorage.setItem('isShelterCreated', false)

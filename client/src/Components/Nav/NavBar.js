@@ -357,7 +357,6 @@ export default function NavBar() {
                 >
                   Log Out
                 </a>:<><a
-                  href="#"
                   onClick = {showModalReg}
                   className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-amber-600 hover:bg-amber-700"
                 >
@@ -365,7 +364,7 @@ export default function NavBar() {
                 </a>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
-                  <a href="#"                  onClick = {showModalLog}
+                  <a                  onClick = {showModalLog}
  className="text-amber-600 hover:text-amber-500">
                     Sign in
                   </a></p></>}

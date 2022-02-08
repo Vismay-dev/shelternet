@@ -17,11 +17,6 @@ const express = require('express')
 // app.use(mongoSanitize())
 dotenv.config()
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
-})
 
 
 mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:true },
@@ -34,32 +29,17 @@ mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:tr
   mongoose.connection.on('error', function (err) { console.log(err) });
   
 
-// PASSPORT CONFIGURATION
-// app.set('trust proxy', 1)
-
-// app.use(session({
-//   secret: 'Vicky',
-//   resave: false,
-//   saveUninitialized: false,
-//   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   cookie: { maxAge: 180 * 60 * 1000, secure: true }
-// }))
-
-// app.use(passport.initialize())
-// app.use(passport.session())
-// passport.use(new LocalStrategy(User.authenticate()))
-// passport.serializeUser(User.serializeUser())
-// passport.deserializeUser(User.deserializeUser())
-
-
+  cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 app.use(express.json())
 
 app.use(cors())
 
 app.use('/api/user',API)
-
-
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
