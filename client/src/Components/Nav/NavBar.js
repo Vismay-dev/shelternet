@@ -24,14 +24,42 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import LogModal from '../Authentication/LogModal'
 import RegModal from '../Authentication/RegModal'
 import ExitModal from '../Authentication/ExitModal'
-const solutions = [
-  {
-    name: 'About Us',
-    description: "Learn More About Shelternet.",
-    href: '#',
-    icon: ViewGridIcon,
-  }
-]
+const solutions = 
+  
+    
+    sessionStorage.getItem('token')!==null ?
+    [
+      {
+        name:'All Shelters',
+        icon:<ViewGridIcon/>,
+        href: '#',
+
+        action:'shelters'
+      },
+      {
+        name:'My Shelter',
+        icon:<ViewGridIcon/>,
+        href: '#',
+
+        action:'shelter'
+      },
+      {
+        name:'Create Shelter',
+        icon:<ViewGridIcon/>,
+        href: '#',
+
+        action:'createshelter'
+      }
+    ]:[
+      {
+        name: 'About Us',
+        description: "Learn More About Shelternet.",
+        href: '#',
+        icon: ViewGridIcon
+      }
+    ]
+  
+
 const callsToAction = [
   // { name: 'Our Team', href: '#', icon: UserGroupIcon , action: 'contact' },
 ]
@@ -136,7 +164,7 @@ export default function NavBar() {
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="sm:left-80 left-full mx-auto relative bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500">
+            <Popover.Button className={`${sessionStorage.getItem('token')!==null?'sm:left-80 left-full':'sm:-left-40 -left-64'} mx-auto relative bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500`}>
               <span className="sr-only">Open menu</span>
               <MenuIcon className="sm:h-10 sm:w-10 h-14 w-14" aria-hidden="true" />
             </Popover.Button>
@@ -302,14 +330,17 @@ export default function NavBar() {
                 <nav className="grid gap-y-8">
                   {solutions.map((item) => (
                     <a
-                    onClick = {()=> {
-                      buttonRef1.current.click()
-                      showModalAbout()}}
+                    onClick = {()=> 
+                      {                        buttonRef1.current.click()
+
+                        if(sessionStorage.getItem('token')===null){
+                      showModalAbout()} else {
+                     history.push(`/${item.action}`)}}}
                       key={item.name}
                       href={item.href}
                       className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                     >
-                      <item.icon className="flex-shrink-0 h-6 w-6 text-amber-600" aria-hidden="true" />
+                      {/* <item.icon className="flex-shrink-0 h-6 w-6 text-amber-600" aria-hidden="true" /> */}
                       <span className="ml-3 text-lg font-medium text-gray-900">{item.name}</span>
                     </a>
                   ))}
@@ -319,18 +350,27 @@ export default function NavBar() {
             <div className="py-6 px-5 space-y-6">
              
               <div>
-                <a
+                {sessionStorage.getItem('token')!==null? <a
                   href="#"
+                  onClick = {showModalOut}
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-amber-600 hover:bg-amber-700"
+                >
+                  Log Out
+                </a>:<><a
+                  href="#"
+                  onClick = {showModalReg}
                   className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-amber-600 hover:bg-amber-700"
                 >
                   Sign up
                 </a>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
-                  <a href="#" className="text-amber-600 hover:text-amber-500">
+                  <a href="#"                  onClick = {showModalLog}
+ className="text-amber-600 hover:text-amber-500">
                     Sign in
-                  </a>
-                </p>
+                  </a></p></>}
+                
+                
               </div>
             </div>
           </div>
