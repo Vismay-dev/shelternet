@@ -14,9 +14,7 @@ const MainContent = ()=> {
     const inject = (i) => {
         setCurrentId(i);
     }
-
-    const baseUrl = process.env.PUBLIC_URL;
-
+    
 
 
     console.log(sessionStorage.getItem('token')?true:false)
@@ -24,17 +22,17 @@ return (
 
 <>
 <Switch>
-    <Route path = {baseUrl + '/home'}><Landing/></Route>
+    <Route path = '/home'><Landing/></Route>
   
-    <Route path =  {baseUrl + '/shelters'}><AllShelters injectShelter = {inject}/></Route>
+    <Route path = '/shelters'><AllShelters injectShelter = {inject}/></Route>
    
-        <Route path = {baseUrl+'/shelter'}><Shelter preID = {currentId}/></Route>
+        <Route path = '/shelter'><Shelter preID = {currentId}/></Route>
 
 
-        <Route path = {baseUrl+'/createshelter'}><CreateShelter/></Route>
+        <Route path = '/createshelter'><CreateShelter/></Route>
 
 
-    <Route path = {baseUrl+'/'}><Redirect to = '/home'/></Route>
+    <Route path = '/'><Redirect to = '/home'/></Route>
 
 </Switch>
 
