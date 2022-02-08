@@ -1,6 +1,6 @@
 import AOS from 'aos';
 import "aos/dist/aos.css"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import ClipLoader from 'react-spinners/ClipLoader'
@@ -56,7 +56,33 @@ const LogModal = (props)=> {
 
 
 
-      
+      const myRef = useRef()
+
+
+      useEffect(
+        () => {
+          const listener = (event) => {
+            // Do nothing if clicking ref's element or descendent elements
+            if (!myRef.current || myRef.current.contains(event.target)) {
+              return;
+            }
+            props.close();
+          };
+          document.addEventListener("mousedown", listener);
+          document.addEventListener("touchstart", listener);
+          return () => {
+            document.removeEventListener("mousedown", listener);
+            document.removeEventListener("touchstart", listener);
+          };
+        },
+        // Add ref and handler to effect dependencies
+        // It's worth noting that because the passed-in handler is a new ...
+        // ... function on every render that will cause this effect ...
+        // ... callback/cleanup to run every render. It's not a big deal ...
+        // ... but to optimize you can wrap handler in useCallback before ...
+        // ... passing it into this hook.
+        [myRef, () => props.close()]
+      );
 
 
 
@@ -71,7 +97,7 @@ const LogModal = (props)=> {
         
           {/* Modal panel, show/hide based on modal state. */}
     
-        <div data-aos="fade-up" data-aos-once='true' class="pr-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-12/12">
+        <div  ref = {myRef} data-aos="fade-up" data-aos-once='true' class="pr-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-12/12">
           <div class="bg-white px-4 pt-2 pb-2 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
               <div class=" text-center sm:mt-0 sm:ml-4 sm:text-left">   
