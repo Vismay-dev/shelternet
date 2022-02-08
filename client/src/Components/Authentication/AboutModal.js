@@ -5,7 +5,7 @@ import dog from '../Nav/dog.png'
 const AboutModal = (props) => {
 
 
-    return (<div  class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    return (<div  class="fixed z-40 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div  class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         {/* Background overlay, show/hide based on modal state. */}
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -16,7 +16,7 @@ const AboutModal = (props) => {
       
         {/* Modal panel, show/hide based on modal state. */}
   
-      <div data-aos="fade-up" data-aos-once='true' class="pr-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-12/12">
+      <div data-aos="fade-up" data-aos-once='true' class="pr-6 z-50 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-12/12">
         <div class="bg-white px-4 pt-2 pb-2 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class=" text-center sm:mt-0 sm:ml-4 sm:text-left">   
@@ -32,6 +32,8 @@ const AboutModal = (props) => {
         <h2 class="mt-6 mb-5 text-center text-3xl font-extrabold text-gray-900">
           About Us
         </h2>
+
+        <h3 class = 'text-center mt-2 relative pt-6 pb-3'>"Shelternet is a Non-Profit Organization which aims to make the pet adoption process in the UAE simpler and accessible to all. <br/><br/> As the co-founders of this platform, we were deeply moved when we came across an instagram post that reported a dog shelter shutting down. Many animals under the shelter's care were left homeless due to a lack of adoption and support. <br/><br/> Inspired by that incident, this website was created in the hope that fostered stray animals in shelters and adoption centers can get a new home and family." <br/><br/> - Vismay Suramwar and Saatvik Sharma, the Co-founders of Shelternet</h3>
       </div>
       
   

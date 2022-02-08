@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import dog from '../Nav/dog.png'
+import ClipLoader from 'react-spinners/ClipLoader'
+
 
 const RegModal = (props)=> {
     useEffect(() => {
@@ -15,6 +17,7 @@ const RegModal = (props)=> {
       const history = useHistory()
 
     
+      let [loading, setLoading] = useState(false);
 
 
       //create state for sign up
@@ -28,9 +31,7 @@ const RegModal = (props)=> {
       });
 
 
-      const [errors, setErrors] = useState({
-        error:''
-      });
+      const [error, setError] = useState('');
 
 
       const handleChange = (event) => {
@@ -47,17 +48,21 @@ const RegModal = (props)=> {
         event.preventDefault();
         console.log(user)
 
+        //prepare user state and send to server
+          setLoading(true)
            axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/register':'http://localhost:4000/api/user/register', user).then(res=> {
             console.log(res.data)
-            sessionStorage.setItem('token', res.data.token);
+            setLoading(false)
             sessionStorage.setItem('isShelter', user.isShelter);
             history.push(!res.data.user.isShelter?'/shelters':'/createshelter')
-
+            sessionStorage.setItem('token', res.data.token);
             props.close()
 
            }).catch(err=> {
+            setLoading(false)
+
              console.log({error:err.response.data.message})
-             setErrors({error:err.response.data.message})
+             setError(err.response.data.message)
            })
         } 
 
@@ -91,9 +96,13 @@ const RegModal = (props)=> {
             Create your account
           </h2>
         </div>
-        <form class="mt-20 top-1 space-y-6 mb-4" onSubmit = {handleSubmit}>
+        
+        
+        {!loading?<form class="mt-20 top-1 space-y-6 mb-4" onSubmit = {handleSubmit}>
           <input class="text-md" type="hidden" name="remember" value="true"/>
           <div class="rounded-md shadow-sm -space-y-px ">
+
+            {error==='A user with the given username is already registered'?<p class="text-red-500 text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Error: Username already exists</p>:null}
             <div>
               <label for="email-address" class="sr-only">Full Name</label>
               <input onChange = {handleChange} id="email-address" name="fullName" type="text"  required class="appearance-none rounded-none relative block w-full px-2 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md" placeholder="Full Name"/>
@@ -106,7 +115,7 @@ const RegModal = (props)=> {
           <div class="rounded-md shadow-sm -space-y-px ">
             <div>
               <label for="email-address" class="sr-only">Username</label>
-              <input onChange = {handleChange} id="email-address" name="username" type="text"  required class="appearance-none rounded-none relative block w-full px-2 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md" placeholder="Username"/>
+              <input onChange = {handleChange} id="email-address" name="username" type="text"  required class={`appearance-none rounded-none relative block w-full px-2 py-1 border  placeholder-gray-500 text-gray-900 rounded-t-md ${error==='A user with the given username is already registered'?'bg-orange-200 text-orange-400 border-orange-400 border-2':'border-gray-300'} focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md`}/>
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
@@ -144,7 +153,8 @@ const RegModal = (props)=> {
              Register
             </button>
           </div>
-        </form>
+        </form>:<div class = 'mx-auto relative text-center w-full justify-center align-middle pb-10 pt-10'><ClipLoader  color={'#F5A623'} loading={loading} size={120}/>
+        </div>}
       </div>
     </div>
     

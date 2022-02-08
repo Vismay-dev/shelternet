@@ -143,7 +143,7 @@ const CreateShelter = () => {
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                   <div className="col-span-6 sm:col-span-4">
-                      <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                      <label htmlFor="email-address" className="block  text-sm font-medium text-gray-700">
                         Name of Organisation
                       </label>
                       <input
@@ -154,10 +154,10 @@ const CreateShelter = () => {
                         name="name"
                         placeholder = {preShelter?preShelter.name:''}
                         id="email-address"
-                        className="mt-1 border-1 border-gray-400 p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm  rounded-md"
+                        className="mt-1 border-2 border-gray-200 p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm  rounded-md"
                       />
                     </div>
-                  <div class = 'col-span-3'>
+                  <div class = 'col-span-6'>
                     <label htmlFor="about" className="block text-sm font-medium text-gray-700">
                       About
                     </label>
@@ -175,10 +175,10 @@ const CreateShelter = () => {
                       />
                     </div>
                     <p className="mt-2 text-sm text-gray-500">
-                      Brief description of your organizations. URLs are hyperlinked.
+                      Brief description of your organization.
                     </p>
                   </div>
-                    <div className="col-span-3 sm:col-span-3">
+                    <div className="col-span-6">
                       <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                         Where can users apply for Animal Adoption?
                       </label>
@@ -195,7 +195,7 @@ const CreateShelter = () => {
                           placeholder = {preShelter?preShelter.site:''}
 
                           id="company-website"
-                          className="focus:ring-amber-500 focus:border-amber-500 flex-1 block w-full rounded-none rounded-r-md p-2 sm:text-sm border-gray-300"
+                          className="border-2 border-gray-200 focus:ring-amber-500 focus:border-amber-500 flex-1 block w-full rounded-none rounded-r-md p-2 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -327,7 +327,7 @@ const CreateShelter = () => {
                         type="text"
                         name="fullName"
                         id="email-address"
-                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="border-2 border-gray-200 mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm  rounded-md"
                       />
                     </div>
 
@@ -343,7 +343,7 @@ const CreateShelter = () => {
                         type="text"
                         name="contact"
                         id="email-address"
-                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-2 border-gray-200 rounded-md"
                       />
                     </div>
 
@@ -358,7 +358,7 @@ const CreateShelter = () => {
                         type="text"
                         name="email"
                         id="email-address"
-                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-2 border-gray-200 rounded-md"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-4">
@@ -373,7 +373,7 @@ const CreateShelter = () => {
                         type="text"
                         name="repPosition"
                         id="email-address"
-                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="mt-1  p-2 focus:ring-amber-500 focus:border-amber-500 block w-full shadow-sm sm:text-sm border-2 border-gray-200 rounded-md"
                       />
                     </div>
 

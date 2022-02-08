@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AOS from 'aos';
 import "aos/dist/aos.css"
+import RotateLoader from 'react-spinners/RotateLoader'
+
 
 const AllShelters = (props) => {
   const [shelters, setShelters] = useState([]);
@@ -13,6 +15,17 @@ const AllShelters = (props) => {
       duration : 1600
     });
   }, []);
+
+  let [loading, setLoading] = useState(false);
+  useEffect(()=> {
+    setLoading(true)
+
+    setTimeout(()=> {
+      setLoading(false)
+    },800)
+
+
+  },[])
 
 
 
@@ -41,8 +54,8 @@ const AllShelters = (props) => {
     
     
         
-            return (<>
-           <div class="bg-gradient-to-r from-white to-yellow-100 ">
+            return (<>{!loading?
+           <div class="bg-gradient-to-r from-white to-yellow-50 ">
           <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <h2 class="text-4xl bottom-8 -mt-1 relative font-extrabold tracking-tight text-gray-900 text-center">Shelters/Agencies in UAE</h2>
         
@@ -55,20 +68,20 @@ const AllShelters = (props) => {
         
             {shelters?
 shelters.map(shelter=> {return(
-  <div data-aos="fade-up" data-aos-once='true' class="group relative mb-8">
+  <div data-aos="fade-up" data-aos-once='true' class="group relative mb-8 shadow-md pb-2 bg-slate-100">
           <div   class="w-full min-h-80 bg-gray-200 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80">
             <img  src={shelter.image} alt="Organization" class="w-full h-full object-center object-cover lg:w-full lg:h-full"/>
           </div>
-          <div class="mt-4 flex justify-between">
+          <div class="mt-4 flex justify-center">
             <div>
               <h3 class="text-md text-gray-700">
                 <a class = 'hover:cursor-pointer'
                 onClick = {()=>{selectShelter(shelter._id)}}>
-                  <span aria-hidden="true" class="absolute text-xl inset-0"></span>
+                  <span aria-hidden="true" class="absolute text-xl inset-0 pl-2 text-center"></span>
                 {shelter?shelter.name:''}
                 </a>
               </h3>
-              <p class="mt-1 text-sm text-gray-500">                      {shelter?shelter.location:''}
+              <p class="mt-1 text-sm text-gray-500 text-center">                      {shelter?shelter.location:''}
 </p>
             </div>
             <p class="text-sm font-medium text-gray-900 top-1 relative"></p>
@@ -93,7 +106,10 @@ shelters.map(shelter=> {return(
         
             </div>
           </div>
-        </div>
+        </div>:<div class = 'bg-gradient-to-r from-white to-yellow-50 w-screen h-screen  justify-center align-middle pb-24'>
+        <div class = 'mx-auto relative text-center top-1/2 '><RotateLoader  color={'#F5A623'} loading={loading} size={30} margin= {20}/>
+        </div></div>
+        }
             </>)
 }
 

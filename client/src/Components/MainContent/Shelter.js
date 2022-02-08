@@ -6,6 +6,7 @@ import {AiOutlineWarning} from 'react-icons/ai'
 import axios from 'axios'
 import { trusted } from 'mongoose'
 import AOS from 'aos';
+import RotateLoader from 'react-spinners/RotateLoader'
 import "aos/dist/aos.css"
 
 const Shelter = (props) => {
@@ -17,6 +18,16 @@ const Shelter = (props) => {
       duration : 1600
     });
   }, []);
+
+  let [loading, setLoading] = useState(false);
+  useEffect(()=> {
+    setLoading(true)
+
+    setTimeout(()=> {
+      setLoading(false)
+    },800)
+
+  },[])
 
   useEffect(()=> {
     if(sessionStorage.getItem('preID')){
@@ -103,9 +114,11 @@ function classNames(...classes) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
+
     <div className="bg-white">
       {
         sessionStorage.getItem('isShelterCreated')!=='false'||!sessionStorage.getItem('isShelterCreated')?
+
       <div className="pt-6" > 
     
         <nav aria-label="Breadcrumb">
@@ -223,8 +236,13 @@ Edit Shelter/Agency Page
             </div>
           </div>
         </div> 
-      </div>
-         :   <><AiOutlineWarning class = 'text-center text-7xl mx-auto relative mt-44'/><br/><h2 class = 'text-5xl mb-80  font-semibold text-center relative'>Shelter Has Not Been Created</h2></> }    
-  </div>)}
+         </div>
+         :   <><div class = 'h-screen w-screen bg-gradient-to-r  -mb-36 from-white to-yellow-100'><AiOutlineWarning class = 'text-center text-7xl mx-auto relative top-52'/><br/><h2 class = ' top-52 text-4xl mb-80  font-semibold text-center relative'>A Shelter Has Not Been Created</h2></div></> }    
+  </div>          
+  
+  
+  
+              
+  )}
 
     export default Shelter

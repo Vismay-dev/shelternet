@@ -4,14 +4,28 @@ import "aos/dist/aos.css"
 import { useEffect, useState } from 'react';
 import RegModal from '../Authentication/RegModal'
 import AboutModal from '../Authentication/AboutModal'
+import RotateLoader from 'react-spinners/RotateLoader'
+
 
 const Landing = () => {
 
+    
     useEffect(() => {
         AOS.init({
           duration : 1600
         });
       }, []);
+      let [loading, setLoading] = useState(false);
+
+      useEffect(()=> {
+        setLoading(true)
+    
+        setTimeout(()=> {
+          setLoading(false)
+        },1000)
+    
+    
+      },[])
 
       const [regModalShow, setRegModalShow] = useState(false)
       const [aboutModalShow, setAboutModalShow] = useState(false)
@@ -36,7 +50,9 @@ const Landing = () => {
                 <AboutModal close = {closeFuncAbout}/>
                  :''
               }
-        <div class="w-full px-6 mb-16 mt-8 relative">
+
+              {!loading?
+        <div class="w-full px-6 mb-16 mt-8 pt-2 relative bg-gradient-to-r ">
             <div data-aos="fade-up" data-aos-once='true' class="mt-8 relative rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 container mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 lg:pb-56 xl:pb-64">
                <img class="mr-2 lg:mr-12 mt-2 lg:mt-12 absolute right-0 top-0"  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg2.svg" alt="bg"/>
                <img class="ml-2 lg:ml-12 mb-2 lg:mb-12 absolute bottom-0 left-0" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg3.svg" alt="bg"/>
@@ -54,7 +70,9 @@ const Landing = () => {
                     <img src={aggregatorimg} alt="Sample Page" role="img"  />
                 </div>
             </div>
-        </div>
+        </div>:<div class = 'bg-gradient-to-r from-white to-yellow-50 w-screen h-screen  justify-center align-middle pb-24'>
+        <div class = 'mx-auto relative text-center top-1/2 '><RotateLoader  color={'#F5A623'} loading={loading} size={30} margin= {20}/>
+        </div></div>}
     </>
     )
 }

@@ -3,6 +3,8 @@ import "aos/dist/aos.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import ClipLoader from 'react-spinners/ClipLoader'
+
 
 import dog from '../Nav/dog.png'
 
@@ -17,6 +19,7 @@ const LogModal = (props)=> {
 
       const history = useHistory()
 
+      let [loading, setLoading] = useState(false);
 
        const [user, setUser] = useState({
         username: '',
@@ -28,24 +31,25 @@ const LogModal = (props)=> {
         setUser({ ...user, [name]: value });
       };
 
-      const [errors, setErrors] = useState({
-        error:''
-      });
+      const [error, setError] = useState('');
 
       const handleSubmit = (event) => {
         event.preventDefault();
         console.log(user)
-
+          setLoading(true)
            axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/login':'http://localhost:4000/api/user/login', user).then(res=> {
             console.log(res.data)
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('isShelter', res.data.isShelter);
             console.log(res.data.isShelter)
+            setLoading(false)
             history.push(res.data.isShelter!=true?'/shelters':'/shelter');
             props.close()
            }).catch(err=> {
-             console.log(err)
-             setErrors({error:err.response.data.message})
+             console.log(err.response)
+             setError(err.response.data)
+             setLoading(false)
+
            })
         } 
       //handle submit and send to server
@@ -84,18 +88,20 @@ const LogModal = (props)=> {
             Sign in to your account
           </h2>
         </div>
-        <form class="mt-20 top-1 space-y-6 mb-2" onSubmit = {handleSubmit}>
+       {!loading? <form class="mt-20 top-1 space-y-6 mb-2" onSubmit = {handleSubmit}>
           <input class="text-md" type="hidden" name="remember" value="true"/>
           <div class="rounded-md shadow-sm -space-y-px ">
+          {error==='Invalid Username'?<p class="text-red-500 text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: Invalid Username</p>:error==='Incorrect Password'?<p class="text-red-500 text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: Incorrect Password</p>:null}
+
             <div>
               <label  class="sr-only">Email address</label>
-              <input name="username"  min = {3}     onChange = {handleChange}
-  required class="appearance-none rounded-none relative block w-full px-2 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md" placeholder="Username"/>
+              <input name="username"  min = {3}  type = 'text'   onChange = {handleChange}
+  required class={`appearance-none rounded-none ${error==='Invalid Username'?'bg-orange-200 text-orange-400 border-orange-400 border-2':'border-gray-300'} relative block w-full px-2 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md`} placeholder="Username"/>
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
               <input id="password"   min = {6}    onChange = {handleChange}
- name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-2 mb-12 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md" placeholder="Password"/>
+ name="password" type="password" autocomplete="current-password" required class={`${error==='Incorrect Password'?'bg-orange-200 text-orange-400 border-orange-400 border-2':'border-gray-300'} appearance-none rounded-none relative block w-full px-2 mb-12 py-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md`} placeholder="Password"/>
             </div>
           </div>
     
@@ -119,7 +125,8 @@ const LogModal = (props)=> {
               Sign in
             </button>
           </div>
-        </form>
+        </form>:<div class = 'mx-auto relative text-center w-full justify-center align-middle pb-10 pt-10'><ClipLoader  color={'#F5A623'} loading={loading} size={120}/>
+        </div>}
       </div>
     </div>
     
