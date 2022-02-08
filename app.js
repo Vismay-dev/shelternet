@@ -55,7 +55,7 @@ mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:tr
 
 app.use(express.json())
 
-app.use(cors())
+// app.use(cors())
 
 app.use('/api/user',API)
 
