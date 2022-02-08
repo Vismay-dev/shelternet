@@ -56,8 +56,8 @@ const AllShelters = (props) => {
         
             return (<>{!loading?
            <div class="bg-gradient-to-r from-white to-yellow-50 ">
-          <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h2 class="text-4xl bottom-8 -mt-1 relative font-extrabold tracking-tight text-gray-900 text-center">Shelters/Agencies in UAE</h2>
+          <div class="max-w-2xl mx-auto py-16 px-5 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h2 class="text-4xl bottom-8 sm:-mt-1 mt-4 relative font-extrabold tracking-tight text-gray-900 text-center">Shelters/Agencies in UAE</h2>
         
             <div class="mt-9 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               

@@ -129,16 +129,16 @@ export default function NavBar() {
               <span className="sr-only">Workflow</span>
               <span class = 'text-xl lg:visible invisible text-gray-600  font-semibold left-8 lg:top-1.5 relative lg:mr-3 -mr-20 inline'>Shelternet</span>
               <img
-                className="h-8 w-auto sm:h-10 inline"
+                className="w-auto sm:visible invisible relative  sm:bottom-0 bottom-0.5 h-10 inline"
                 src={dog}
                 alt=""
               />
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-white rounded-md p-4 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500">
+            <Popover.Button className="sm:left-80 left-full mx-auto relative bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500">
               <span className="sr-only">Open menu</span>
-              <MenuIcon className="h-6 w-6" aria-hidden="true" />
+              <MenuIcon className="sm:h-10 sm:w-10 h-14 w-14" aria-hidden="true" />
             </Popover.Button>
           </div>
           {sessionStorage.getItem('token')!==null?<>
