@@ -19,7 +19,7 @@ const AllShelters = (props) => {
     const history = useHistory()
     useEffect(()=> {
       if(shelters.length==0){
-        axios.post(process.env.NODE_ENV!=='production'?'http://localhost:4000/api/user/getshelters':'http://localhost:4000/api/user/getshelters',{token:sessionStorage.getItem('token')}).then(res=> {
+        axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelters':'http://localhost:4000/api/user/getshelters',{token:sessionStorage.getItem('token')}).then(res=> {
           setShelters(res.data);        
       }).catch(err=> {
         console.log(err.response.data.message)
@@ -42,7 +42,7 @@ const AllShelters = (props) => {
     
         
             return (<>
-           <div class="bg-white">
+           <div class="bg-gradient-to-r from-white to-yellow-100 ">
           <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <h2 class="text-4xl bottom-8 -mt-1 relative font-extrabold tracking-tight text-gray-900 text-center">Shelters/Agencies in UAE</h2>
         

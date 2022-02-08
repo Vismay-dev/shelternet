@@ -49,7 +49,7 @@ const CreateShelter = () => {
 
   useEffect(()=> {
     
-      axios.post(process.env.NODE_ENV!=='production'?'http://localhost:4000/api/user/getshelter':'http://localhost:4000/api/user/getshelter',{token:sessionStorage.getItem('token')}).then(res=> {
+      axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelter':'http://localhost:4000/api/user/getshelter',{token:sessionStorage.getItem('token')}).then(res=> {
         setPreShelter(
           res.data.center
         )
@@ -83,7 +83,7 @@ const CreateShelter = () => {
     console.log(new File([image],'image'))
     
 
-    axios.post(process.env.NODE_ENV!=='production'?'http://localhost:4000/api/user/createshelter':'http://localhost:4000/api/user/createshelter', data,{
+    axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/createshelter':'http://localhost:4000/api/user/createshelter', data,{
       headers: {
         "Content-Type": "multipart/form-data"
       }

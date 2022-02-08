@@ -21,7 +21,7 @@ const Shelter = (props) => {
   useEffect(()=> {
     if(sessionStorage.getItem('preID')){
   
-      axios.post(process.env.NODE_ENV!=='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelteronid':'http://localhost:4000/api/user/getshelteronid',{token:sessionStorage.getItem('token'), id:sessionStorage.getItem('preID')}).then(res=> {
+      axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelteronid':'http://localhost:4000/api/user/getshelteronid',{token:sessionStorage.getItem('token'), id:sessionStorage.getItem('preID')}).then(res=> {
         setShelter(
           res.data.center
         )
@@ -38,7 +38,7 @@ const Shelter = (props) => {
       
     }else if(!shelter){
 
-        axios.post(process.env.NODE_ENV!=='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelter':'http://localhost:4000/api/user/getshelter',{token:sessionStorage.getItem('token')}).then(res=> {
+        axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelter':'http://localhost:4000/api/user/getshelter',{token:sessionStorage.getItem('token')}).then(res=> {
           setShelter(
             res.data.center
           )

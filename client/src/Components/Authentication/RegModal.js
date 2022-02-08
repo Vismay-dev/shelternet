@@ -47,7 +47,7 @@ const RegModal = (props)=> {
         event.preventDefault();
         console.log(user)
 
-           axios.post(process.env.NODE_ENV!=='production'?'http://localhost:4000/api/user/register':'http://localhost:4000/api/user/register', user).then(res=> {
+           axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/register':'http://localhost:4000/api/user/register', user).then(res=> {
             console.log(res.data)
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('isShelter', user.isShelter);
@@ -56,7 +56,7 @@ const RegModal = (props)=> {
             props.close()
 
            }).catch(err=> {
-             console.log(err)
+             console.log({error:err.response.data.message})
              setErrors({error:err.response.data.message})
            })
         } 
