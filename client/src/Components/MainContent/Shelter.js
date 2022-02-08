@@ -25,7 +25,7 @@ const Shelter = (props) => {
 
     setTimeout(()=> {
       setLoading(false)
-    },800)
+    },600)
 
   },[])
 
