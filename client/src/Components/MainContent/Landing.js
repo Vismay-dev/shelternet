@@ -6,7 +6,6 @@ import RegModal from '../Authentication/RegModal'
 import AboutModal from '../Authentication/AboutModal'
 import RotateLoader from 'react-spinners/RotateLoader'
 
-
 const Landing = () => {
 
     
@@ -61,7 +60,7 @@ const Landing = () => {
                     <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">Want to help a stray animal? We're the place!</h1>
                 </div>
                 <div class="flex justify-center items-center mb-10 sm:mb-20">
-                    <button class="hover:text-white hover:bg-transparent lg:text-xl hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-amber-700	focus:ring-white rounded text-amber-700 px-4 sm:px-8 py-1 sm:py-3 text-sm" onClick = {showModalReg}>Get Started</button>
+                    {sessionStorage.getItem('token')===null?<button class="hover:text-white hover:bg-transparent lg:text-xl hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-amber-700	focus:ring-white rounded text-amber-700 px-4 sm:px-8 py-1 sm:py-3 text-sm" onClick = {showModalReg}>Get Started</button>:''}
                     <button class="hover:bg-white hover:text-amber-700 lg:text-xl hover:border-amber-600 ml-3 sm:ml-6 bg-transparent transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-amber-700 focus:ring-white hover:bg-indigo-700-800 rounded border border-white text-white px-4 sm:px-8 py-1 sm:py-3 text-sm" onClick = {showModalAbout}>Learn More</button>
                 </div>
             </div>

@@ -23,12 +23,12 @@ return (
 <Switch>
     <Route path = '/home'><Landing/></Route>
   
-    <Route path = '/shelters'>{sessionStorage.getItem('token')!==null?<AllShelters injectShelter = {inject}/>:<Redirect to ='/'/>}</Route>
+    <Route path = '/shelters'><AllShelters injectShelter = {inject}/></Route>
    
-        <Route path = '/shelter'>{sessionStorage.getItem('token')!==null?<Shelter preID = {currentId}/>:<Redirect to ='/'/>}</Route>
+        <Route path = '/shelter'><Shelter preID = {currentId}/></Route>
 
 
-        <Route path = '/createshelter'>{sessionStorage.getItem('token')!==null?<CreateShelter/>:<Redirect to ='/'/>}</Route>
+        <Route path = '/createshelter'><CreateShelter/></Route>
 
 
     <Route path = '/'><Redirect to = '/home'/></Route>

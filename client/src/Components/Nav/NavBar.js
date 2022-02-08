@@ -142,7 +142,7 @@ export default function NavBar() {
             </Popover.Button>
           </div>
           {sessionStorage.getItem('token')!==null?<>
-          <div class = 'md:visible invisible'>
+          <div class = 'md:visible invisible space-x-10'>
            <a onClick = {()=> {
              history.push('/shelters')
            }}
@@ -168,6 +168,7 @@ export default function NavBar() {
          className="text-base font-medium text-gray-500 hover:cursor-pointer hover:text-gray-900">
         {sessionStorage.getItem('isShelterCreated')==='false'?'Create Shelter':'Edit Shelter Details'}
       </a>
+      
      
          </>
          :''

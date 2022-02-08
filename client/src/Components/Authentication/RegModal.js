@@ -144,7 +144,7 @@ const RegModal = (props)=> {
           <div class="rounded-md shadow-sm -space-y-px ">
             <div>
               <label for="email-address" class="sr-only">Username</label>
-              <input onChange = {handleChange} id="email-address" name="username" type="text"  required class={`appearance-none rounded-none relative block w-full px-2 py-1 border  placeholder-gray-500 text-gray-900 rounded-t-md ${error==='A user with the given username is already registered'?'bg-orange-200 text-orange-400 border-orange-400 border-2':'border-gray-300'} focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md`}/>
+              <input onChange = {handleChange} id="email-address" name="username" type="text"  required class={`appearance-none rounded-none relative block w-full px-2 py-1 border  placeholder-gray-500 text-gray-900 rounded-t-md ${error==='A user with the given username is already registered'?'bg-orange-200 text-orange-400 border-orange-400 border-2':'border-gray-300'} focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-md`} placeholder = 'Username'/>
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
