@@ -25,7 +25,7 @@ const Shelter = (props) => {
 
     setTimeout(()=> {
       setLoading(false)
-    },600)
+    },900)
 
   },[])
 
@@ -115,6 +115,7 @@ function classNames(...classes) {
 
   return (
 
+    !loading?
     <div className="bg-white">
       {
         sessionStorage.getItem('isShelterCreated')!=='false'||sessionStorage.getItem('isShelterCreated')===null?
@@ -243,6 +244,9 @@ Edit Shelter/Agency Page
   
   
               
-  )}
+  :<div class = 'bg-gradient-to-r from-white to-yellow-50 w-screen h-screen  justify-center align-middle pb-24'>
+<div class = 'mx-auto relative text-center top-1/2 '><RotateLoader  color={'#F5A623'} loading={loading} size={30} margin= {20}/>
+</div></div>
+)}
 
     export default Shelter
