@@ -30,15 +30,16 @@ const Shelter = (props) => {
   },[])
 
   useEffect(()=> {
-    if(sessionStorage.getItem('preID')){
+    sessionStorage.setItem('isShelterCreated',false)
+    if(sessionStorage.getItem('preID')!==null){
   
       axios.post(process.env.NODE_ENV==='production'?'https://codex-shelternet.herokuapp.com/api/user/getshelteronid':'http://localhost:4000/api/user/getshelteronid',{token:sessionStorage.getItem('token'), id:sessionStorage.getItem('preID')}).then(res=> {
         setShelter(
           res.data.center
         )
-        console.log(res.data.center)
+        console.log(sessionStorage.getItem('isShelterCreated'))
 
-        if(res.data.center){
+        if(res.data.center!==null){
           sessionStorage.setItem('isShelterCreated', true)
 
         }
@@ -53,6 +54,7 @@ const Shelter = (props) => {
           setShelter(
             res.data.center
           )
+          console.log(res.data.center)
           if(res.data.center){
             sessionStorage.setItem('isShelterCreated', true)
 
@@ -118,7 +120,7 @@ function classNames(...classes) {
     !loading?
     <div className="bg-white">
       {
-        sessionStorage.getItem('isShelterCreated')!=='false'||sessionStorage.getItem('isShelterCreated')===null?
+        sessionStorage.getItem('isShelterCreated')!=='false'&&sessionStorage.getItem('isShelterCreated')===null||sessionStorage.getItem('isShelterCreated')==='true'?
 
       <div className="pt-6" > 
     
